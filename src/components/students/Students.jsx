@@ -14,8 +14,9 @@ const Students = () => {
     }, []);
     
     const handleDelete = (id) => {
+        console.log('delet btn is clicked')
         if (window.confirm("Are you sure you want to delete this student?")) {
-            fetch(`http://localhost:8081/students/${id}`, {
+            fetch(`http://localhost:8081/student/${id}`, {
                 method: 'DELETE',
             })
             .then(response => response.json())

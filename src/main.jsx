@@ -24,7 +24,7 @@ export const AuthContext = createContext();
 // Define your routes
 const router = createBrowserRouter([
   {
-    path: "/",
+   
     element: <App />,
     children: [
       { path: "/home", element: <Home /> },

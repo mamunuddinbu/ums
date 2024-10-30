@@ -20,6 +20,8 @@ const StudentInsertModal = ({ closeModal }) => {
   };
 
   const handleSubmit = (e) => {
+    console.log("insert button is clicked")
+    console.log(formData)
     e.preventDefault();
     fetch('http://localhost:8081/students', {
       method: 'POST',
@@ -138,6 +140,7 @@ const StudentInsertModal = ({ closeModal }) => {
             <button
               type="submit"
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-500"
+              onClick={handleSubmit}
             >
               Insert
             </button>

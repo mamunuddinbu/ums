@@ -3,18 +3,17 @@ import { useContext } from "react";
 import { AuthContext } from "../src/main"; // Import the AuthContext
 
 function App() {
-  const { loggedIn, setLoggedIn } = useContext(AuthContext);
+  const { loggedIn, setLoggedIn, loggedInMail } = useContext(AuthContext);
   const navigate = useNavigate(); // useNavigate hook for programmatic navigation
 
-  console.log(loggedIn);
-  const style = "hover:bg-blue-700 px-3 py-2 rounded-md text-lg";
-
   const handleLogout = () => {
-    console.log("test");
+    console.log("Logging out");
     localStorage.removeItem("authToken");
     setLoggedIn(false);
     navigate("/login");  // Programmatically navigate to the login page
   };
+
+  const style = "hover:bg-blue-700 px-3 py-2 rounded-md text-lg";
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -32,6 +31,8 @@ function App() {
           <Link to="/about" className={style}>
             About
           </Link>
+          
+          {/* Profile Picture Section */}
           <div className="px-3 py-2 rounded-md text-lg">
             {loggedIn && (
               <div>
@@ -39,8 +40,8 @@ function App() {
                   <div className="w-20 h-20 rounded-full flex items-center justify-center absolute top-2 border-8 border-blue-600 border-solid">
                     <img
                       className="w-full h-full rounded-full object-cover"
-                      src="../public/1.jpg"
-                      alt=""
+                      src="/1.jpg" // Adjusted path to public folder
+                      alt="Profile"
                     />
                   </div>
                 </Link>
@@ -48,6 +49,7 @@ function App() {
             )}
           </div>
 
+          {/* Login/Logout Button */}
           <div className="bg-slate-600 flex items-center justify-center rounded-2xl ml-48">
             {loggedIn ? (
               <button
